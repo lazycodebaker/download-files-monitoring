@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build cpprestsdk",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                ".",
+                "--target",
+                "api.cpp",
+                "--config",
+                "Debug"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
