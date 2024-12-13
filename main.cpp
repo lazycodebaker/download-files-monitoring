@@ -1,4 +1,4 @@
-/*#include <CoreServices/CoreServices.h>
+#include <CoreServices/CoreServices.h>
 #include <iostream>
 #include <map>
 #include <string>
@@ -52,58 +52,6 @@ private:
         }
     }
     void processFile(const std::string &filePath)
-    {
-        std::filesystem::path sourcePath(filePath);
-
-        std::cout << "File changed: " << filePath << std::endl;
-
-        if (std::filesystem::exists(sourcePath) && std::filesystem::is_regular_file(sourcePath))
-        {
-            std::string extension = sourcePath.extension().string();
-            std::transform(extension.begin(), extension.end(), extension.begin(), ::tolower);
-
-            // Remove the dot from the extension
-            if (!extension.empty() && extension[0] == '.')
-            {
-                extension = extension.substr(1);
-            }
-
-            std::cout << "Source Path: " << filePath << " File extension: " << extension << std::endl;
-
-            if (extensionToFolders.count(extension))
-            {
-                std::filesystem::path destinationFolder = directoryPath + "/" + extensionToFolders[extension];
-
-                if (!std::filesystem::exists(destinationFolder))
-                {
-                    std::filesystem::create_directory(destinationFolder);
-                }
-
-                std::filesystem::rename(sourcePath, destinationFolder / sourcePath.filename());
-                std::cout << "Moved file: " << filePath << " to: " << destinationFolder << std::endl;
-            }
-        }
-    }
-
-    std::string directoryPath;
-    FSEventStreamRef eventStream;
-    std::map<std::string, std::string> extensionToFolders = {
-        {".txt", "TextFiles"},
-        {".pdf", "PDFFiles"},
-        {".png", "ImageFiles"}
-        // Add more extensions and corresponding folders as needed
-    };
-};
-
-int main()
-{
-    std::string directoryPath = "/Users/anshumantiwari/Documents/CODES/C++/"; // Change this to the path of your download directory
-    FileMonitor fileMonitor(directoryPath);
-    fileMonitor.startMonitoring();
-
-    return 0;
-}
-*/
 
 #include <iostream>
 #include <filesystem>
